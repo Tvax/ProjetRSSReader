@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once 'controllers/news.php';
 require_once 'models/news.php';
 require_once 'views/news.php';
@@ -18,7 +20,8 @@ elseif(isset($_COOKIE['username'])){
   echo $viewIndexAdmin->output();
 }
 elseif(isset($_GET['err'])){
-  $controllerIndex->setError($_GET['err']);
+  //$controllerIndex->setError($_GET['err']);
+  $controllerIndex->setError('idError');
   $viewIndexError = new NewsView($controllerIndex, $modelNews);
   echo $viewIndexError->output();
 }

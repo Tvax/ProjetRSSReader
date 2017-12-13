@@ -4,8 +4,6 @@ class Database{
 
   private $servername = "sql11.freemysqlhosting.net";
   private $username = "sql11205709";
-//  private $password = "JXXfhRc7EL";
-//  private $password =  $_SERVER['DBPASSWD_ENV'];
   private $password =  null;
   private $dbname = "sql11205709";
   private $conn = null;
@@ -15,7 +13,8 @@ class Database{
   }
 
   private function connect(){
-    $this->password = $_SERVER['DBPASSWD_ENV'];
+//    $this->password = 'JXXfhRc7EL';
+    $this->password = getenv('DBPASSWD_ENV');
     $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
     // Check connection
     if ($this->conn->connect_error) {

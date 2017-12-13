@@ -4,7 +4,7 @@ class NewsView {
 
   private $controllerNews;
   private $modelNews;
-  private $error = "idError";
+  private $idError = "idError";
 
   function __construct($controllerNews, $modelNews){
     $this->controllerNews = $controllerNews;
@@ -23,13 +23,12 @@ class NewsView {
   }
 
   function generateNotif(){
-    if($this->controllerNews->getError() == null) return ""; //rien vu que y'en a pas
-    elseif ($this->controllerNews->getError() == $this->$error) {
+    if($this->controllerNews->getError() == $this->idError) {
       return "Credidentials error, try again !";
     }
 
     if($this->controllerNews->getDisconnected()){
-      return "Disconnect succesfully";
+      return "Disconnected succesfully";
     }
   }
 

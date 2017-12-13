@@ -1,4 +1,39 @@
 <?php
+session_start();
+
+require_once 'controllers/admin.php';
+require_once 'models/admin.php';
+require_once 'views/admin.php';
+
+$modelAdmin = new ModelAdmin();
+$controllerAdmin = new ControllerAdmin($modelAdmin);
+
+//session pas ouverte en checkant si le cookie de session correspond a un ID de session ouverte
+if(true){
+//if(sessionID = $_COOKIE['userID']){
+  //mettre un bool dans controller pour dire que tout va bien et que le mec est admin
+  $viewAdmin = new AdminView($controllerAdmin, $modelAdmin);
+  echo $viewAdmin->output();
+}
+//donc on check si ya des trucs envoye par POST et si ils sont valides
+elseif($controllerAdmin->validUser($_COOKIE['username'], $_COOKIE['password'])){
+  //mettre un bool dans controller pour dire que tout va bien et que le mec est admin
+  $controllerAdmin->createNewSession();
+  $viewAdmin = new AdminView($controllerIndex, $modelNews);
+  echo $viewAdmin->output();
+  //si ils sont valides -> creation d'une nouvelle session
+}
+//on renvoie l'user sur la page index avec une erreur de creditentials
+else{
+  $viewAdmin->Homepage("?err"); //avec ?err en parmetre
+}
+
+
+
+
+
+/*
+<?php
 
 require("database.php");
 require("adminUser.php");
@@ -70,3 +105,4 @@ echo displayAdmin($d);
 echo displayUrls($d);
 
 ?>
+*/

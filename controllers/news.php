@@ -21,7 +21,7 @@ class ControllerIndex{
 		$this->admin = true;
 	}
 	public function setError($err){
-		$this->$error = $err;
+		$this->error = $err;
 	}
 
 	function __construct($modelNews){

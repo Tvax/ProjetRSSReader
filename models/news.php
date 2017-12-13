@@ -9,6 +9,12 @@ class ModelNews{
   private $rssXMLArray = array();
   private $d = null;
 
+  function __construct(){
+    $this->d = new Database();
+    $this->maxNews = $this->d->getMaxNews();
+    $this->xml2Tab($this->d->getUrls());
+  }
+
   public function getMaxNews(){
     return $this->maxNews;
   }
@@ -17,13 +23,7 @@ class ModelNews{
     return $this->rssXMLArray;
   }
 
-  function __construct(){
-    $this->d = new Database();
-    $this->maxNews = $this->d->getMaxNews();
-    $this->xml2Tab($this->d->getUrls());
-  }
-
-  private function xml2Tab($urls){
+ public function xml2Tab($urls){
     $i = 0;
     while($row = $urls->fetch_assoc()) {
       $this->rssXMLArray[$i] = @simplexml_load_file($row["url"]); // XML parser
