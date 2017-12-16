@@ -10,12 +10,18 @@ class ModelAdmin{
 	private $maxNews;
 	private $urls;
  	private $rssXMLArray = array();
+ 	private $gateway = null;
 
 	function __construct(){
-	    	$this->d = new Database();
+  	$this->d = new Database();
 		$this->maxNews = $this->d->getMaxNews();
 		$this->urls = $this->d->getUrls();
 		$this->xml2Tab($this->d->getUrls());
+	}
+
+	public function setMaxNews($max_news){
+		$this->max_news = $max_news;
+		$this->gateway
 	}
 
 	public function isValidUser($usr, $pswd){
