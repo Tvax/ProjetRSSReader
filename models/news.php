@@ -1,18 +1,18 @@
 <?php
 
 define('__ROOT__', dirname(dirname(__FILE__)));
-require(__ROOT__.'/database.php');
+require_once(__ROOT__.'/database/gateway.php');
 
 class ModelNews{
 
   private $maxNews;
   private $rssXMLArray = array();
-  private $d = null;
+  private $gateway = null;
 
   function __construct(){
-    $this->d = new Database();
-    $this->maxNews = $this->d->getMaxNews();
-    $this->xml2Tab($this->d->getUrls());
+    $this->gateway = new Gateway();
+    $this->maxNews = $this->gateway->getMaxNews();
+    $this->xml2Tab($this->gateway->getUrls());
   }
 
   public function getMaxNews(){

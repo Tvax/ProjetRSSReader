@@ -1,16 +1,18 @@
 <?php
 
+require_once (__ROOT__.'/database/database.php');
+
 class Gateway{
 	private $d = null;
-	
-	function __construct(argument){
+
+	function __construct(){
 		$this->d = new Database();
 	}
 
 	public function ValidCreditentials($usr, $pswd){
     $sql = "SELECT username, password FROM Settings";
-    $row = $this->ExecQuery($sql);
-    
+    $row = $this->d->ExecQuery($sql);
+
     if($row['username'] == $usr && $row['password'] == $pswd){
       return true;
     }
@@ -19,17 +21,17 @@ class Gateway{
 
   public function GetUrls(){
     $sql = "SELECT url FROM Feed";
-    $row = $this->ExecQuery($sql);
+    $row = $this->d->ExecQueryGet($sql);
 
     if ($row->num_rows > 0) {
-      return $result;
+      return $row;
     }
-    return false;
+    return null;
   }
 
   public function GetMaxNews(){
     $sql = "SELECT max_news FROM Settings";
-    $result = $this->ExecQuery($sql);
+    $result = $this->d->ExecQueryGet($sql);
 
     if ($result->num_rows > 0){
       $row = $result->fetch_assoc();
@@ -42,16 +44,19 @@ class Gateway{
 
   public function SetMaxNews($max_news){
     $sql = "UPDATE Settings SET max_news = $max_news WHERE Settings.username = 'admin'";
-    return ExecQuerySet($sql);
-
-//mettre ca dans le modele en dessous
-    if ($this->conn->query($sql) === TRUE) {
-      return "<p>Max news that will be fetched : $max_news</p><br>";
-    }
-    else {
-      return "Error: " . $sql . "<br>" . $this->conn->error;
-    }
+    return $this->d->ExecQuerySet($sql);
   }
 
+	public function AddUrl($url){
+		$url = '"' . $url . '"';
+		$sql = "INSERT INTO Feed (url) VALUES($url)";
+		return $this->d->ExecQuerySet($sql);
+	}
+
+	public function RmUrl($url){
+		$url = '"' . $url . '"';
+		$sql = "DELETE FROM Feed WHERE Feed.url = $url";
+		return ExecQuerySet($sql);
+	}
 
 }

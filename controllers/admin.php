@@ -9,16 +9,20 @@ class ControllerAdmin{
 	private $urlAction;
 
 	public function isAdmin(){
-		return $admin;
+		return $this->admin;
 	}
-	
+
 	function __construct($modelAdmin){
 		$this->modelAdmin = $modelAdmin;
-		if(checkIfMaxNewsUpdated()){
-			$this->modelAdmin->setMaxNews($max_news);
+		if($this->checkIfMaxNewsUpdated()){
+			if(!$this->modelAdmin->setMaxNews($this->max_news)){
+				//TODO: BDD pas UPDATE
+			}
 		}
-		if(checkIfUrlUpdated()){
-			$this->modelAdmin->UpdateUrl($url, $urlAction);
+		if($this->checkIfUrlUpdated()){
+			if(!$this->modelAdmin->UpdateUrl($this->url, $this->urlAction)){
+				//TODO: BDD pas UPDATE
+			}
 		}
 	}
 
@@ -31,16 +35,7 @@ class ControllerAdmin{
 	}
 
 	private function checkIfMaxNewsUpdated(){
-		if(isset($_POST['max_news']){
-			$this->max_news = $_POST['max_news'];
-			var_dump(filter_var($this->max_news, FILTER_SANITIZE_NUMBER_INT));
-			return true;
-		}
-		return false;
-	}
-
-	private function checkIfUrlUpdated(){
-		if(isset($_POST['max_news']){
+		if(isset($_POST['max_news'])){
 			$this->max_news = $_POST['max_news'];
 			var_dump(filter_var($this->max_news, FILTER_SANITIZE_NUMBER_INT));
 			return true;
@@ -52,7 +47,7 @@ class ControllerAdmin{
 		if(isset($_POST['url'])){
 			$this->url = $_POST['url'];
 			var_dump(filter_var($this->url, FILTER_VALIDATE_URL));
-			if(rmOrAdd()){
+			if($this->rmOrAdd()){
 				return true;
 			}
 		}

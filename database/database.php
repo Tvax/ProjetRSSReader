@@ -23,40 +23,11 @@ class Database{
   }
 
   public function ExecQueryGet($query){
-    $sql = $query;
-    $result = $this->conn->query($sql);
-    return $result->fetch_assoc();
+    return $this->conn->query($query);
+    //return $result->fetch_assoc();
   }
 
   public function ExecQuerySet($query){
     return $this->conn->query($query);
   }
-
-  
-
-  
-
-  public function addUrl($url){
-    $url = '"' . $url . '"';
-    $sql = "INSERT INTO Feed (url) VALUES($url)";
-
-    if ($this->conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" .$this->conn->error;
-    }
-  }
-
-  public function rmUrl($url){
-    $url = '"' . $url . '"';
-    $sql = "DELETE FROM Feed WHERE Feed.url = $url";
-    if ($this->conn->query($sql) === TRUE) {
-        echo "Record deleted successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" .$this->conn->error;
-    }
-  }
-
 }
-
-?>

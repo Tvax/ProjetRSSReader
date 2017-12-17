@@ -11,7 +11,7 @@ class ControllerIndex{
 		return $this->admin;
 	}
 	public function getDisconnected(){
-		return $this->disconnected;
+		return $this->disconnect;
 	}
 	public function getError(){
 		return $this->error;
@@ -33,7 +33,7 @@ class ControllerIndex{
   unset($_COOKIE['password']);
   setcookie('username', null, -1, '/');
   setcookie('password', null, -1, '/');
-	$this->disconnected = true;
+	$this->disconnect = true;
 	//session stop plutot
 	}
 }

@@ -29,5 +29,3 @@ else{
   $viewIndex = new NewsView($controllerIndex, $modelNews);
   echo $viewIndex->output();
 }
-
-?>
