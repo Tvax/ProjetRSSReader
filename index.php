@@ -6,26 +6,26 @@ require_once 'controllers/news.php';
 require_once 'models/news.php';
 require_once 'views/news.php';
 
-$modelNews = new ModelNews();
-$controllerIndex = new ControllerIndex($modelNews);
+$modelAdmin = new ModelNews();
+$controllerIndex = new ControllerIndex($modelAdmin);
 
 if(isset($_GET['disconnect'])){
   $controllerIndex->Disconnect();
-  $viewIndexDisconnected = new NewsView($controllerIndex, $modelNews);
+  $viewIndexDisconnected = new NewsView($controllerIndex, $modelAdmin);
   echo $viewIndexDisconnected->output();
 }
 elseif(isset($_COOKIE['username'])){
   $controllerIndex->setAdminTrue();
-  $viewIndexAdmin = new NewsView($controllerIndex, $modelNews);
+  $viewIndexAdmin = new NewsView($controllerIndex, $modelAdmin);
   echo $viewIndexAdmin->output();
 }
 elseif(isset($_GET['err'])){
   //$controllerIndex->setError($_GET['err']);
   $controllerIndex->setError('idError');
-  $viewIndexError = new NewsView($controllerIndex, $modelNews);
+  $viewIndexError = new NewsView($controllerIndex, $modelAdmin);
   echo $viewIndexError->output();
 }
 else{
-  $viewIndex = new NewsView($controllerIndex, $modelNews);
+  $viewIndex = new NewsView($controllerIndex, $modelAdmin);
   echo $viewIndex->output();
 }

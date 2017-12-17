@@ -18,16 +18,11 @@ class Database{
     $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
     // Check connection
     if ($this->conn->connect_error) {
-      die("Connection failed: " . $this->conn->connect_error);
+      //die("Connection failed: " . $this->conn->connect_error);
     }
   }
 
-  public function ExecQueryGet($query){
-    return $this->conn->query($query);
-    //return $result->fetch_assoc();
-  }
-
-  public function ExecQuerySet($query){
+  public function ExecQuery($query){
     return $this->conn->query($query);
   }
 }

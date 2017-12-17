@@ -11,7 +11,10 @@ class AdminView{
   }
 
   private function generateTop(){
-  	include (__ROOT__.'/layouts/adminTop.php');
+  	include(__ROOT__ . '/layouts/adminTop.html');
+    if($this->modelAdmin->getDBError != null){
+        include(__ROOT__ . '/layouts/adminError.html');
+    }
   }
 
   private function generateMaxNews(){

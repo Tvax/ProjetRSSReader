@@ -8,20 +8,27 @@ class ModelNews{
   private $maxNews;
   private $rssXMLArray = array();
   private $gateway = null;
+  private $sessionAdmin;
 
-  function __construct(){
+    public function getMaxNews(){
+        return $this->maxNews;
+    }
+
+    public function getrssXMLArray(){
+        return $this->rssXMLArray;
+    }
+
+    public function getSessionAdmin(){
+        return $this->sessionAdmin;
+    }
+
+    function __construct(){
     $this->gateway = new Gateway();
+    $this->sessionAdmin = $this->gateway->GetSessionAdmin();
     $this->maxNews = $this->gateway->getMaxNews();
     $this->xml2Tab($this->gateway->getUrls());
   }
 
-  public function getMaxNews(){
-    return $this->maxNews;
-  }
-
-  public function getrssXMLArray(){
-    return $this->rssXMLArray;
-  }
 
  public function xml2Tab($urls){
     $i = 0;

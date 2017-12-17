@@ -26,14 +26,15 @@ class ControllerIndex{
 
 	function __construct($modelNews){
 		$this->modelNews = $modelNews;
+        if($_SESSION['admin'] == $this->modelNews->getSessionAdmin()){
+            $this->admin = true;
+        }
 	}
 
 	public function Disconnect(){
-  unset($_COOKIE['username']);
-  unset($_COOKIE['password']);
-  setcookie('username', null, -1, '/');
-  setcookie('password', null, -1, '/');
-	$this->disconnect = true;
-	//session stop plutot
+        $_SESSION["admin"] = "";
+        session_destroy();
+        $this->admin = false;
+        $this->disconnect = true;
 	}
 }

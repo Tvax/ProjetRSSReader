@@ -13,11 +13,11 @@ class NewsView {
 
   function generateTop(){
     if(!$this->controllerNews->getAdmin()){
-      include (__ROOT__.'/layouts/indexTopLogin.php');
+      include(__ROOT__ . '/layouts/indexTopLogin.html');
       //return 'login';
     }
     else{
-      include (__ROOT__.'/layouts/indexTopAdmin.php');
+      include (__ROOT__.'/layouts/indexTopAdmin.html');
       //return 'admin';
     }
   }
