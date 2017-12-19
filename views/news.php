@@ -24,16 +24,17 @@ class NewsView {
 
   function generateNotif(){
     if($this->controllerNews->getError() == $this->idError) {
-      return "Credidentials error, try again !";
+      return '<h3 class="channel-title"><p align="center">Credidentials error, try again !<p></h3>';
     }
 
     if($this->controllerNews->getDisconnected()){
-      return "Disconnected succesfully";
+      return '<h3 class="channel-title"><p align="center">Disconnected succesfully !<p></h3>';
     }
   }
 
   function generateBottom(){
     $string = null;
+   
     /*
     recup du tableau de chaque flux RSS
     par exemple :   Tab -> CNN
@@ -54,19 +55,33 @@ class NewsView {
       $j = 0;
       $rss = $rssArray[$i];
 
-      //La on affiche le nom de la chaine en gros au dessous de toutes les new (CNN en gros + som logo si y'en a un)
-      $string .= '<h2><img style="vertical-align: middle;" src="'.$rss->channel->image->url.'" /> '.$rss->channel->title.'</h2>';
+      //La on affiche le nom de la chaine en gros au dessous de toutes les new
+      $string .= '<div class="container"><div class="properties-news"><h1 align="center" class ="channel-title">'.$rss->channel->title.'</h1>';
 
       //La on affiche chaque news de CNN, comme montre la haut
       foreach($rss->channel->item as $item) {
         if ($j < $this->modelNews->getMaxNews()) { // Max news c'est le nombre max de news a afficher pour chaque flux
+          $num=$j+1;
+          $string .= '<div class="news-article"><h3 class="sub-channel-title">Article ' .$num.' of '.$rss->channel->title.'</h3>';
           $string .= '<a href="'.$item->link.'">'.$item->title.'</a><br />';
           $string .= '<p>' .$item->pubDate.'<p>';
-          $string .= '<p>' .$item->description.'<p>';
+          $string .= '<p class="news-description">' .$item->description.'</p><br/><br/>';
+          $num=$j+1;
         }
         $j++;
+         $string .='</div>';
       }
+      $string .='<div>
+            <p><br/>
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>';
+     
     }
+    $string .=' </body>
+    </html> ';
     //Et ca retourne le tout
     return $string;
   }

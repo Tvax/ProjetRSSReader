@@ -18,16 +18,19 @@ class AdminView{
   }
 
   private function generateMaxNews(){
-  	return 'Max news : ' . $this->modelAdmin->getMaxNews();
+  	return '<div class="container properties-news"><h3>Max news : '. $this->modelAdmin->getMaxNews().'</h3>';
   }
 
   private function generateBottom(){
 	  $result =  $this->modelAdmin->getUrls();
 	  $row = null;
-	  $string = "<h4>URLs : </h4>";
+	  $string = '<h4>URLs : </h4>';
 	  while($row = $result->fetch_assoc()) {
 	    $string .= '<p>' . $row["url"] . '</p>';
 	  }
+    $string.='</div>
+      </body>
+    </html>';
 	  return $string;
   }
 
