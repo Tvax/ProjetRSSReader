@@ -14,7 +14,7 @@ class Database{
 
   private function connect(){
 //    $this->password = 'JXXfhRc7EL';
-    $this->password = 'JXXfhRc7EL';
+    $this->password = getenv('DBPASSWD_ENV');
     $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
     // Check connection
     if ($this->conn->connect_error) {
