@@ -6,7 +6,7 @@
 	margin-top: 5px; 
 }
 #nav-properties{
-	background-color: 	#00BFFF;
+	background-color: 	#E0E0E0;
 
 }
 
@@ -113,14 +113,13 @@
 }
 .properties-news{
 	  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-	  background-color: #E0FFFF;
+	  background-color: #EEEEEE;
 	  box-shadow: 8px 8px 12px #aaa;
-	  border: 1px solid red;
 	  border-radius: 4px;
 }
 
 .page{
-	background-color: #F0FFFF;
+	background-color: #F5F5F5;
 
 }
 

@@ -24,7 +24,7 @@ class NewsView {
 
   function generateNotif(){
     if($this->controllerNews->getError() == $this->idError) {
-      return '<h3 class="channel-title"><p align="center">Credidentials error, try again !<p></h3>';
+      return '<h3 class="channel-title"><p align="center">Credentials error, try again !<p></h3>';
     }
 
     if($this->controllerNews->getDisconnected()){
