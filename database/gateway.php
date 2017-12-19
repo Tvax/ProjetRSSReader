@@ -1,5 +1,6 @@
 <?php
-
+// admin =21232f297a57a5a743894a0e4a801fc3;
+//lel=0e00e5e62efa31ea7a66a0d0e98efe14;
 require_once (__ROOT__.'/database/database.php');
 
 class Gateway{
@@ -19,13 +20,13 @@ class Gateway{
         return null;
     }
 
-	public function ValidCreditentials($usr, $pswd){
+	public function ValidCredentials($usr, $pswd){
     $sql = "SELECT username, password FROM Settings";
     $result= $this->d->ExecQuery($sql);
 
     $row = $result->fetch_assoc();
 
-    if($row['username'] == $usr && $row['password'] == $pswd){
+    if($row['username'] == md5($usr) && $row['password'] == md5($pswd)){
         return true;
     }
         return false;

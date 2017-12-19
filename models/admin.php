@@ -44,7 +44,7 @@ class ModelAdmin{
 	}
 
 	public function isValidUser($usr, $pswd){
-		return ($this->gateway->validCreditentials($usr,$pswd));
+		return ($this->gateway->validCredentials($usr,$pswd));
 	}
 
 	public function UpdateUrl($url, $action){

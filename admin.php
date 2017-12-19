@@ -23,7 +23,7 @@ elseif(!empty($_POST["username"]) && $controllerAdmin->ValidUser($_POST['usernam
     $viewAdmin = new AdminView($controllerAdmin, $modelAdmin);
     echo $viewAdmin->output();
 }
-//on renvoie l'user sur la page index avec une erreur de creditentials
+//on renvoie l'user sur la page index avec une erreur de credentials
 else{
     $viewAdmin = new AdminView($controllerAdmin, $modelAdmin);
     $viewAdmin->Homepage("?err"); //avec ?err en parmetre
