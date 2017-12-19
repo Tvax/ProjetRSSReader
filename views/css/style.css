@@ -1,0 +1,126 @@
+.nameFlux{
+	font-size: 100px;
+}
+
+.news-title{
+	margin-top: 5px; 
+}
+#nav-properties{
+	background-color: 	#00BFFF;
+
+}
+
+.button-style{
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 10px 10px;
+	display: inline-block;
+	margin: 10px 10px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.button-style-1{
+	border: 3px solid #000;
+	color: #000;
+	margin-left: 70px;
+}
+
+.button-style-2{
+	border: 3px solid #000;
+	color: #000;
+	
+}
+
+
+}
+
+.button-style-1a:hover,
+.button-style-1a:active {
+	color: #0e83cd;
+	background: #fff;
+}
+
+.design-textbox{
+	margin: 0 auto;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+#add{
+     
+    }
+
+
+.channel-title{
+
+	font-weight: bold;
+
+}
+
+
+.btn {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 10px 10px;
+	display: inline-block;
+	margin: 10px 10px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-1 {
+	border: 3px solid #fff;
+	color: #fff;
+}
+/*
+.btn-1a:hover,
+.btn-1a:active {
+	color: #0e83cd;
+	background: #fff;
+*/
+.news-article{
+	margin-left: 10px;
+	margin-right: 15px;
+}
+
+.sub-channel-title{
+	 text-decoration: underline;
+}
+
+.news-description{
+
+}
+.properties-news{
+	  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	  background-color: #E0FFFF;
+	  box-shadow: 8px 8px 12px #aaa;
+	  border: 1px solid red;
+	  border-radius: 4px;
+}
+
+.page{
+	background-color: #F0FFFF;
+
+}
+
