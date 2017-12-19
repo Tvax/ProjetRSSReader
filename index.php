@@ -17,7 +17,7 @@ if(isset($_GET['disconnect'])){
 }
 
 //Si l'utlisateur est connecte en tant qu'administrateur
-elseif(!empty($_SESSION["admin"]) && $controllerAdmin->CheckSessionID($_SESSION["admin"]){
+elseif(isset($_COOKIE['username'])){
   $controllerIndex->setAdminTrue();
   $viewIndexAdmin = new NewsView($controllerIndex, $modelAdmin);
   echo $viewIndexAdmin->output();
@@ -25,7 +25,6 @@ elseif(!empty($_SESSION["admin"]) && $controllerAdmin->CheckSessionID($_SESSION[
 
 //Si il y a eu une erreur lors de la tentative de connexion
 elseif(isset($_GET['err'])){
-  //$controllerIndex->setError($_GET['err']);
   $controllerIndex->setError('idError');
   $viewIndexError = new NewsView($controllerIndex, $modelAdmin);
   echo $viewIndexError->output();

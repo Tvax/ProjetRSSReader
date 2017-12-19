@@ -57,7 +57,7 @@ class Gateway{
     }
 
     public function SetMaxNews($max_news){
-        $sql = "UPDATE Settings SET max_news = $max_news WHERE Settings.username = 'admin'";
+        $sql = "UPDATE Settings SET max_news = $max_news WHERE Settings.username = '21232f297a57a5a743894a0e4a801fc3'";
         return $this->d->ExecQuery($sql);
     }
 
